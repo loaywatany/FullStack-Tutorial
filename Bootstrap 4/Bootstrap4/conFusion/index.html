@@ -45,7 +45,7 @@
                                     <img src="img/logo.png" alt="Logo" class="img-fluid">
                 </div>
                 <div class="col-xs col-sm">
-                    <a class="btn btn-warning" href="#reserve" role="button">Reserve Table</a>
+                    <a class="btn btn-warning" href="#reserve" role="button" style="padding:10px">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -108,21 +108,23 @@
                         <div class="card-body">
                             <dl class="row">
                                 <dt class="col-12 col-lg-2">Number of Guests</dt>
-                                <dd><input type="radio" name="1" value="1"> &nbsp;1</dd> &nbsp;
-                                <dd><input type="radio" name="2" value="2"> &nbsp;2</dd> &nbsp;
-                                <dd><input type="radio" name="3" value="3"> &nbsp;3</dd> &nbsp;
-                                <dd><input type="radio" name="4" value="4"> &nbsp;4</dd> &nbsp;
-                                <dd><input type="radio" name="5" value="5"> &nbsp;5</dd> &nbsp;
-                                <dd><input type="radio" name="6" name="6">&nbsp;6</dd> &nbsp;
+                                <dd><form action="reserve-btn">
+                                    <input type="radio" name="radio" value="one">1 &nbsp;
+                                    <input type="radio" name="radio" value="two">2 &nbsp;
+                                    <input type="radio" name="radio" value="three">3 &nbsp;
+                                    <input type="radio" name="radio" value="4">4 &nbsp;
+                                    <input type="radio" name="radio" value="5">5 &nbsp; 
+                                    <input type="radio" name="radio" value="6">6 &nbsp;
+                                </form></dd>
                             </dl>
                             <dl class="row">
                              <dt class="col-12 col-lg-2">Date and Time</dt>
-                             <dd><input type="text" class="form-control" placeholder="Date"></dd>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <dd><input type="text" class="form-control" placeholder="Date"></dd> &nbsp;&nbsp;&nbsp;
                              <dd><input type="text" class="form-control" placeholder="Time"></dd>
 
                             </dl>
                             <dl class="row">
-                                <dt class="col-4 offset-2"><button class="btn btn-outline-primary"> Reserve</button></dt>
+                                <dt class="col-4 offset-2"><button class="btn btn-outline-primary" id="reserve-btn"> Reserve</button></dt>
                             </dl>
                         </div>
                       </div>
