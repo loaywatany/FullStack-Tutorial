@@ -4,7 +4,13 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync= require('browser-sync'),
     del = require('del'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    uglify = require('gulp-uglify'),
+    usemin = require('gulp-usemin'),
+    rev = require('gulp-rev'),
+    cleanCss = require('gulp-clean-css'),
+    flatmap = require('gulp-flatmap'),
+    htmlmin = require('gulp-htmlmin');
 
 
 gulp.task('sass', function () {
@@ -55,6 +61,21 @@ gulp.task('imagemin', function() {
     .pipe(gulp.dest('dist/img'));
 });
 
+gulp.task('usemin', function() {
+    return gulp.src('./*.html')
+    .pipe(flatmap(function(stream, file) {
+        return stream
+        .pipe(usemin({
+            css: [rev()],
+            html: [ function() {return htmlmin({ collapseWhitespace: true })}],
+            js: [ uglify(), rev() ],
+            inlinejs: [ uglify() ],
+            inlinecss: [ cleanCss(), 'concat']
+        }))
+    }))
+    .pipe(gulp.dest('dist/'));
+})
+
 gulp.task('build', ['clean'], function() {
-    gulp.start('copyfonts', 'imagemin');
+    gulp.start('copyfonts', 'imagemin', 'usemin');
 });
